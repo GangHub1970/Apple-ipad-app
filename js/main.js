@@ -80,3 +80,20 @@ function hideSearch() {
   // 검색창이 닫힐 때 검색창을 초기화해준다.
   searchInputEl.value = "";
 }
+
+// entries에는 observe를 실행한 요소들이 배열로 들어오게 된다.
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    // isIntersecting으로 요소가 보이는 상태인지 확인한다.
+    if (!entry.isIntersecting) {
+      return;
+    }
+    entry.target.classList.add("show");
+  });
+});
+
+// info 클래스를 가지는 요소를 모두 찾아서 observe 함수로 관찰을 시작한다.
+const infoEls = document.querySelectorAll(".info");
+infoEls.forEach((el) => {
+  io.observe(el);
+});
