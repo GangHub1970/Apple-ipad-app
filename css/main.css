@@ -1,4 +1,18 @@
 /* COMMON */
+html {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-font: #1d1d1d;
+  --color-font-darkgray: #6e6e6e;
+  --color-font-lightgray: #f5f5f5;
+  --color-link: #0071e3;
+  --color-link-focus: #81b9f1;
+  --color-border: #d2d2d2;
+  --color-header: #3a3a3a;
+  --color-section: #f5f5f5;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+}
+
 html.fixed {
   /* 검색창이 나타났을 때 fixed 클래스를 추가해서 스크롤을 막기위해 position 속성을 fixed로 지정한다. */
   position: fixed;
@@ -10,7 +24,7 @@ html.fixed {
 body {
   font-family: "Roboto", "Noto Sans KR", sans-serif;
   font-size: 16px;
-  color: #1d1d1d;
+  color: var(--color-font);
   line-height: 1;
   word-break: keep-all;
 
@@ -18,7 +32,7 @@ body {
 }
 
 a {
-  color: #1d1d1d;
+  color: var(--color-font);
   text-decoration: none;
 }
 
@@ -52,8 +66,8 @@ p {
   border-radius: 100px;
   outline: none;
   font-size: 11px;
-  color: #fff;
-  background-color: #0071e3;
+  color: var(--color-white);
+  background-color: var(--color-link);
   cursor: pointer;
   line-height: 1;
 }
@@ -64,7 +78,7 @@ p {
 
 .btn:focus {
   /* box-shadow: x, y, blur, spread, color; */
-  box-shadow: 0 0 0 4px #81b9f1;
+  box-shadow: 0 0 0 4px var(--color-link-focus);
 }
 
 /* 콘텐츠를 이미지로 대체하고 스크린 리더기가 읽을 수 있게 내용을 삭제하지 않고 안보이게 하기위해 공통 속성을 지정한다. */
@@ -84,7 +98,7 @@ p {
 }
 
 a.link {
-  color: #0071e3;
+  color: var(--color-link);
   font-size: 19px;
   line-height: 1.3;
 }
@@ -97,8 +111,13 @@ a.link::after {
   content: ">";
 }
 
+.feature {
+  display: flex;
+}
+
 .figures {
   position: relative;
+  flex-grow: 1;
 }
 
 /* 공통 속성으로 지정하면 자식 요소의 개수에 따라 위치가 달라질 수 있으니 기준위치를 잡는다ㅏ. */
@@ -115,10 +134,46 @@ a.link::after {
   left: 0;
 }
 
+.infos {
+  /* z-index를 설정해주기 위해 position 속성을 지정해준다. */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.infos.infos--center {
+  justify-content: center;
+}
+
+.infos.infos--end {
+  justify-content: flex-end;
+}
+
+.info {
+  max-width: 330px;
+  margin-bottom: 24px;
+}
+
+.info .icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 0 -15px -30px;
+  background-image: url("../assets/images/sprite_apps.png");
+}
+
+.info p {
+  font-size: 21.5px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 /* Header */
 header {
+  --header-height: 44px;
+
   position: relative;
-  background-color: #3a3a3a;
+  background-color: var(--color-header);
   /* 대부분의 경우 z-index 속성이 적용되려면 position 속성이 static이 아니어야 한다. */
   z-index: 9;
 }
@@ -131,7 +186,7 @@ header .inner {
 /* Header / Menu */
 header ul.menu {
   display: flex;
-  height: 44px;
+  height: var(--header-height);
   justify-content: space-between;
 }
 
@@ -148,7 +203,7 @@ header ul.menu > li > a {
   align-items: center;
   padding: 0 10px;
   font-size: 11px;
-  color: #f5f5f5;
+  color: var(--color-font-lightgray);
   opacity: 0.8;
 }
 
@@ -186,10 +241,10 @@ header .basket {
   right: -6px;
   width: 290px;
   padding: 10px 20px;
-  border: 1px solid #d2d2d2;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: var(--color-white);
   /* display 속성으로 요소의 보임과 사라짐을 지정하면 애니메이션을 적용할 수 없으므로 visibility 속성을 사용한다. */
   visibility: hidden;
   opacity: 0;
@@ -217,8 +272,8 @@ header .basket .arrow::before {
   left: 50%;
   width: 12px;
   height: 12px;
-  border: 1px solid #d2d2d2;
-  background-color: #fff;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
   transform: rotate(45deg);
   /* transfrom 속성의 기준점을 기본값인 중심에서 '가로 세로'로 지정한다. */
   transform-origin: 0 0;
@@ -228,7 +283,7 @@ header .basket .message {
   text-align: center;
   padding: 30px 0;
   font-size: 13px;
-  color: #6e6e6e;
+  color: var(--color-font-darkgray);
 }
 
 header .basket ul {
@@ -236,14 +291,14 @@ header .basket ul {
 }
 
 header .basket ul li {
-  border-top: 1px solid #d2d2d2;
+  border-top: 1px solid var(--color-border);
 }
 
 header .basket ul li a {
   display: block;
   padding: 14px;
   font-size: 13px;
-  color: #0071e3;
+  color: var(--color-link);
 }
 
 header .basket ul li a:hover {
@@ -274,7 +329,7 @@ header .search-wrap .search .shadow {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--color-shadow);
 }
 
 header .search-wrap .search .textfield {
@@ -283,12 +338,12 @@ header .search-wrap .search .textfield {
 
 header .search-wrap .search input {
   width: 100%;
-  height: 44px;
+  height: var(--header-height);
   padding: 0 40px;
   border: none;
   outline: none;
   font-size: 17px;
-  color: #fff;
+  color: var(--color-white);
   background-color: transparent;
   box-sizing: border-box;
 }
@@ -298,7 +353,7 @@ header .search-wrap .search .search-icon {
   top: 0;
   left: 0;
   width: 40px;
-  height: 44px;
+  height: var(--header-height);
   background-image: url("../assets/images/header_search.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -310,7 +365,7 @@ header .search-wrap .search .search-closer {
   top: 0;
   right: 0;
   width: 40px;
-  height: 44px;
+  height: var(--header-height);
   background-image: url("../assets/images/header_close.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -324,19 +379,19 @@ header .search-wrap .search .search-closer:hover {
 
 header .search-wrap .search .autocompletes {
   position: absolute;
-  top: 44px;
+  top: var(--header-height);
   left: 0;
   width: 100%;
   padding: 26px 40px 20px;
   border-radius: 0 0 18px 18px;
-  background-color: #fff;
+  background-color: var(--color-white);
   box-sizing: border-box;
 }
 
 header .search-wrap .search .autocompletes h3 {
   margin-bottom: 12px;
   font-size: 12px;
-  color: #6e6e6e;
+  color: var(--color-font-darkgray);
 }
 
 header .search-wrap .search .autocompletes ul li a {
@@ -347,8 +402,8 @@ header .search-wrap .search .autocompletes ul li a {
 }
 
 header .search-wrap .search .autocompletes ul li:hover a {
-  color: #0071e3;
-  background-color: #f5f5f5;
+  color: var(--color-link);
+  background-color: var(--color-section);
 }
 
 header .search input,
@@ -382,7 +437,7 @@ header.searching .search .autocompletes li {
 nav {
   position: sticky;
   top: 0;
-  border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid var(--color-border);
   /* 배경을 blur처리하기 위해 투명도를 줘야하므로 rgba로 배경색상을 지정한다. */
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
@@ -416,7 +471,7 @@ nav .menu li a {
 }
 
 nav .menu li a:hover {
-  color: #0071e3;
+  color: var(--color-link);
 }
 
 nav .menu li.active a {
@@ -425,12 +480,12 @@ nav .menu li.active a {
 }
 
 nav .menu li.active a:hover {
-  color: #1d1d1d;
+  color: var(--color-font);
 }
 
 /* Hero */
 .hero {
-  background-color: #f5f5f5;
+  background-color: var(--color-section);
 }
 
 .hero .inner {
@@ -498,4 +553,65 @@ nav .menu li.active a:hover {
 
 .hero .links {
   margin-top: 30px;
+}
+
+/* Power */
+.power {
+  margin-top: 110px;
+}
+
+.power .multiple-apps h1 {
+  width: 500px;
+  height: 280px;
+  background-image: url("../assets/images/power_headline.png");
+  transform: translate(104px, 0);
+}
+
+.power .multiple-apps .figures {
+  height: 773px;
+}
+
+.power .multiple-apps .figures figcaption {
+  width: 138px;
+  height: 46px;
+  background-image: url("../assets/images/power_multiple_apps_caption.png");
+  transform: translate(703px, -47px);
+}
+
+.power .arcade {
+  margin-top: 55px;
+}
+
+.power .arcade .figures {
+  height: 600px;
+}
+
+.power .arcade figure {
+  transform: translate(-347px, -90px);
+}
+
+.power .arcade figcaption {
+  width: 150px;
+  height: 77px;
+  background-image: url("../assets/images/power_arcade_caption.png");
+  transform: translate(483px, 653px);
+}
+
+.power .create {
+  margin-top: 55px;
+}
+
+.power .create .figures {
+  height: 772px;
+}
+
+.power .create figure {
+  transform: translate(-25px, 50px);
+}
+
+.power .create figcaption {
+  width: 142px;
+  height: 46px;
+  background-image: url("../assets/images/power_create_caption.png");
+  transform: translate(543px, 908px);
 }
