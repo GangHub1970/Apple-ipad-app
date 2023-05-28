@@ -97,3 +97,20 @@ const infoEls = document.querySelectorAll(".info");
 infoEls.forEach((el) => {
   io.observe(el);
 });
+
+const video = document.querySelector(".stage video");
+const playBtn = document.querySelector(".stage .controller--play");
+const pauseBtn = document.querySelector(".stage .controller--pause");
+
+// play와 pause 메서드는 video 요소에서 사용할 수 있는 메서드다.
+playBtn.addEventListener("click", () => {
+  video.play();
+  playBtn.classList.add("hide");
+  pauseBtn.classList.remove("hide");
+});
+
+pauseBtn.addEventListener("click", () => {
+  video.pause();
+  pauseBtn.classList.add("hide");
+  playBtn.classList.remove("hide");
+});

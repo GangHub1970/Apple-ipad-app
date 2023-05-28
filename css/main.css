@@ -723,6 +723,95 @@ nav .menu li.active a:hover {
   transform: translate(300px, 658px);
 }
 
+/* Camera */
+.camera {
+  margin-top: 303px;
+}
+
+.camera .stage {
+  position: relative;
+}
+
+.camera .stage h1 {
+  width: 650px;
+  height: 450px;
+  background-image: url("../assets/images/camera_headline.png");
+  transform: translateX(-25px);
+}
+
+.camera .stage .info {
+  /* transform 속성을 이용하면 원래 자리가 사라지지 않고 남아있기 때문에 position 속성으로 위치를 지정한다. */
+  position: absolute;
+  top: 150px;
+  right: 0;
+}
+
+.camera .stage .figures {
+  height: 770px;
+  margin-top: 24px;
+}
+
+.camera .stage figure {
+  transform: translateX(90px);
+}
+
+.camera .stage figure video {
+  position: absolute;
+  top: 36px;
+  left: 76px;
+  /* maks-image 속성으로 영상을 보여줄 영역을 지정한다.(이미지로 지정) */
+  -webkit-mask-image: url("../assets/images/camera_video_mask.png");
+  mask-image: url("../assets/images/camera_video_mask.png");
+}
+
+.camera .stage figure .controller--play,
+.camera .stage figure .controller--pause {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-link);
+  transform: translate(428px, -134px) rotate(-3deg);
+  cursor: pointer;
+}
+
+.camera .stage figure .controller--play:hover,
+.camera .stage figure .controller--pause:hover {
+  text-decoration: underline;
+}
+
+.camera .stage figure .controller--play.hide,
+.camera .stage figure .controller--pause.hide {
+  display: none;
+}
+
+.camera .stage figure .controller--play img,
+.camera .stage figure .controller--pause img {
+  width: 20px;
+  margin-top: -2px;
+}
+
+.camera .stage figcaption {
+  width: 130px;
+  height: 110px;
+  background-image: url("../assets/images/camera_hardware_caption.png");
+  transform: translate(-116px, 383px);
+}
+
+.camera .edit .figures {
+  height: 910px;
+}
+
+.camera .edit figure {
+  transform: translateX(20px);
+}
+
+.camera .edit figcaption {
+  width: 130px;
+  height: 47px;
+  background-image: url("../assets/images/camera_edit_caption.png");
+  transform: translate(27px, 905px);
+}
+
 @keyframes sprite-icon {
   /* 1~10 */
   0.00% {
